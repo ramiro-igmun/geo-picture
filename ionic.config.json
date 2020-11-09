@@ -1,0 +1,7 @@
+{
+  "name": "androidPictureLocation",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
