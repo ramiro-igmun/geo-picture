@@ -1,3 +1,4 @@
+import { PhotoService } from '../services/photo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PicturesPage implements OnInit {
 
-  constructor() { }
+  constructor(public photoService: PhotoService) { }
 
   ngOnInit() {
+    this.photoService.getPhotos();
+  }
+
+  takePhoto() {
+    this.photoService.takePhoto();
   }
 
 }
