@@ -1,3 +1,4 @@
+import { PicturePopoverComponent } from './picture-popover/picture-popover.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { PicturesPage } from './pictures.page';
     IonicModule,
     PicturesPageRoutingModule
   ],
-  declarations: [PicturesPage]
+  declarations: [PicturesPage, PicturePopoverComponent],
 })
 export class PicturesPageModule {}

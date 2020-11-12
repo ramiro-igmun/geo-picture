@@ -1,3 +1,4 @@
+import { PhotoMetadata } from './../models/PhotoMetadata.model';
 import { Plugins, CameraPhoto, FilesystemDirectory } from '@capacitor/core';
 import { Injectable } from '@angular/core';
 
@@ -20,6 +21,10 @@ export class FileService {
     });
 
     return fileName;
+  }
+
+  public async deleteFile(photoData: PhotoMetadata) {
+    Filesystem.deleteFile({path: photoData.filePath, directory: FilesystemDirectory.Data});
   }
 
   private async readAsBase64(photo: CameraPhoto): Promise<string | ArrayBuffer> {
