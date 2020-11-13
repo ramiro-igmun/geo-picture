@@ -1,4 +1,4 @@
-  
+
 ion-menu-button {
   color: var(--ion-color-primary);
 }
@@ -26,4 +26,8 @@ ion-menu-button {
 
 #container a {
   text-decoration: none;
+}
+
+::ng-deep.leaflet-popup-content {
+  width: 200px !important;
 }

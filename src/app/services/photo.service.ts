@@ -3,9 +3,8 @@ import {PhotoDataService} from './storage.service';
 import {PhotoMetadata} from 'src/app/models/PhotoMetadata.model';
 import {Injectable} from '@angular/core';
 import {Plugins, CameraResultType, CameraSource} from '@capacitor/core';
-import {Geolocation} from '@ionic-native/geolocation/ngx';
 
-const {Camera} = Plugins;
+const {Camera, Geolocation} = Plugins;
 
 @Injectable({
     providedIn: 'root'
@@ -15,8 +14,7 @@ export class PhotoService {
     photos: PhotoMetadata[] = [];
 
     constructor(private storageService: PhotoDataService,
-                private fileService: FileService,
-                private geolocation: Geolocation) {
+                private fileService: FileService) {
     }
 
     public async takePhoto() {
@@ -26,8 +24,7 @@ export class PhotoService {
             source: CameraSource.Camera,
         });
 
-        const geoPosition = await this.geolocation.getCurrentPosition();
-
+        const geoPosition = await Geolocation.getCurrentPosition();
         const filePath = await this.fileService.saveFile(photo);
 
         this.photos = [
@@ -38,7 +35,6 @@ export class PhotoService {
                 latitude: geoPosition.coords.latitude
             }
         ];
-        console.log(this.photos);
         await this.storageService.savePhotosMetadata(this.photos);
     }
 
